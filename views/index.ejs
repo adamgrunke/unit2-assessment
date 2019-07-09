@@ -17,9 +17,9 @@
     <% widgets.forEach(function(widget){ %>
                 <section>
                     <h2><%= widget.dataValues.description %></h2>
-                    <h2>Quantity<%= widget.dataValues.quantity %></h2>
+                    <p>Quantity: <%= widget.dataValues.quantity %></p>
                     <form method="POST" action="/<%= widget.dataValues.id %>/?_method=DELETE">
-                        <input  type="submit" value="delete"/>
+                        <input type="submit" value="delete"/>
                     </form>
                 </section>
     <% }); %>

@@ -14,24 +14,26 @@ app.use(methodOverride('_method'));
 app.get('/', function(req, res) {
     db.widget.findAll().then(function(widgets){
         res.render('index',{widgets})
-    })
+    });
 })
 
 app.post('/', function(req, res) {
     db.widget.create({
         description: req.body.description,
         quantity: req.body.quantity
-    })
+    }).then(function(){
+
         res.redirect('/')
     })
+});
 
-    app.delete('/:id', function(req, res) {
-        db.widget.destroy({
-            where: {id: parseInt(req.params.id)}
-        }).then(function() {
-            res.redirect('/');
-            });
+app.delete('/:id', function(req, res) {
+    db.widget.destroy({
+        where: {id: parseInt(req.params.id)}
+    }).then(function() {
+        res.redirect('/');
         });
+    });
 
 // YOUR ROUTES ABOVE THIS COMMENT /////////////
 

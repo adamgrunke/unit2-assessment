@@ -5,9 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Widgets</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
+<h1>Wacky Widgets</h1>
 
+<% if ( widgets.length === 0 ) { %>
+    <h3>No Widgets Exist!</h3>
+<% } else { %>
+
+    <% widgets.forEach(function(widget){ %>
+                <section>
+                    <h2><%= widget.dataValues.description %></h2>
+                    <h2>Quantity<%= widget.dataValues.quantity %></h2>
+                    <form method="POST" action="/?_method=DELETE">
+                        <input name="<%= widget.dataValues.id %>"  type="submit" value="delete"/>
+                    </form>
+                </section>
+    <% }); %>
+
+<% }; %>
+
+    <hr>
+
+  <h3>Add Widgets</h3>
+    <form method="POST" action="/">
+        <input type="text" name="description" placeholder="Widget description...">
+        <input type="text" name="quantity" placeholder="Widget quantity...">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

@@ -27,7 +27,7 @@ app.post('/', function(req, res) {
 
     app.delete('/:id', function(req, res) {
         db.widget.destroy({
-            where: {id: parseInt(req.body.id)}
+            where: {id: parseInt(req.params.id)}
         }).then(function() {
             res.redirect('/');
             });
